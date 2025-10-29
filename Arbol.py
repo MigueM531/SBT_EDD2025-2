@@ -4,6 +4,7 @@ class BinaryTreeNode:
     self.data = data
     self.leftchild = None
     self.rightchild = None
+    self.parent = None
 
 
   def __str__(self, level=0):
