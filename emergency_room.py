@@ -65,7 +65,6 @@ class Quirofano:
         
     
     def programar_cirugia(self):
-        # 1️⃣ Si no hay pacientes
         if self.root is None:
             return None
 
@@ -103,7 +102,6 @@ class Quirofano:
         print(f"{paciente_siguiente.nombre} será llevado a cirugía.")
         return paciente_siguiente
 
-
     def heap_down(self, nodo):
         if nodo is None:
             return
@@ -120,6 +118,25 @@ class Quirofano:
             self.heap_down(menor)  # llamada recursiva
 
 
+    def ver_lista_pacientes(self):
+        if self.root is None:
+            print("No hay pacientes en espera.")
+            return
+
+        q = Queue()
+        q.enqueue(self.root)
+
+
+        while not q.is_empty():
+            nodo = q.dequeue()
+            p = nodo.data
+
+            print(p)
+
+            if nodo.leftchild:
+                q.enqueue(nodo.leftchild)
+            if nodo.rightchild:
+                q.enqueue(nodo.rightchild)
 
 
 quirofano = Quirofano()
@@ -143,3 +160,7 @@ print("\n=== Árbol de pacientes ===")
 printTree(quirofano.root)
 
 print(f"\nSIGUIENTE A QUIROFANO: {quirofano.consultar_siguiente()}")
+
+print(f"\n=== ORDEN ARBOL ===")
+quirofano.ver_lista_pacientes()
+
