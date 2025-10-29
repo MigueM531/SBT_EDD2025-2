@@ -138,6 +138,34 @@ class Quirofano:
             if nodo.rightchild:
                 q.enqueue(nodo.rightchild)
 
+    def ver_pacientes_prioridad(self, nivel_emergencia):
+        if self.root is None:
+            print("No hay pacientes en espera.")
+            return
+
+        q = Queue()
+        q.enqueue(self.root)
+        encontrados = 0
+
+        while not q.is_empty():
+            nodo = q.dequeue()
+            p = nodo.data
+
+            if p.nivel_emergencia == nivel_emergencia:
+                print(p)
+                encontrados += 1
+
+            # Seguir recorriendo el árbol (único contenedor permitido)
+            if nodo.leftchild:
+                q.enqueue(nodo.leftchild)
+            if nodo.rightchild:
+                q.enqueue(nodo.rightchild)
+
+        if encontrados == 0:
+            print("No se encontraron pacientes con este nivel de emergencia.\n")
+        else:
+            print(f"Total encontrados: {encontrados}\n")
+
 
 quirofano = Quirofano()
 
@@ -164,3 +192,5 @@ print(f"\nSIGUIENTE A QUIROFANO: {quirofano.consultar_siguiente()}")
 print(f"\n=== ORDEN ARBOL ===")
 quirofano.ver_lista_pacientes()
 
+print(f"\n=== VER POR PRIORIDAD ===")
+quirofano.ver_pacientes_prioridad(1)
