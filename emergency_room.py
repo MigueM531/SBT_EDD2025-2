@@ -115,7 +115,7 @@ class Quirofano:
 
         if menor != nodo:
             nodo.data, menor.data = menor.data, nodo.data
-            self.heap_down(menor)  # llamada recursiva
+            self.heap_down(menor) 
 
 
     def ver_lista_pacientes(self):
