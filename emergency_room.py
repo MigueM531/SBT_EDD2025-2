@@ -155,7 +155,6 @@ class Quirofano:
                 print(p)
                 encontrados += 1
 
-            # Seguir recorriendo el árbol (único contenedor permitido)
             if nodo.leftchild:
                 q.enqueue(nodo.leftchild)
             if nodo.rightchild:
